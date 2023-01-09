@@ -43,4 +43,33 @@ public class CountryRepositoryTest {
         assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
     }
 
+    @Test
+    void onSaitCompterLesPopulations(){
+        log.info("On s'assure que la somme des City correspond");
+        Country myOnlyCountry = new Country("IT","Italia");
+        City myFirstCity = new City("Rome", myOnlyCountry);
+        myFirstCity.setPop(5);
+        City mySecondCity = new City("Venice", myOnlyCountry);
+        myFirstCity.setPop(8);
+        int combienDHabitantsDansCountry = 5 + 8;
+        int habs = countryDAO.countInhabitants(myOnlyCountry.getId());
+        assertEquals(combienDHabitantsDansCountry, habs, "On doit trouver 13 habitants");
+    }
+
+    @Test
+    void onRegardeLesListesDePays(){
+        log.info("Je n'en peux plus de ces TP");
+        Country myOnlyCountry = new Country("IT","Italia");
+        City myFirstCity = new City("Rome", myOnlyCountry);
+        myFirstCity.setPop(5);
+        City mySecondCity = new City("Venice", myOnlyCountry);
+        myFirstCity.setPop(8);
+
+        Country mySecondCountry = new Country("AU","Australia");
+        City myFirstSecondCity = new City("Sydney", mySecondCountry);
+        myFirstCity.setPop(9);
+        City mySecondSecondCity = new City("unTruc", mySecondCountry);
+        myFirstCity.setPop(4);
+        //Pas fini
+    }
 }
